@@ -7,21 +7,21 @@ const EMAIL = "info@stroy-brigada.ru";
 const HERO_IMG = "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/files/a37be59d-cb5f-44d5-8d36-96ea54a88f87.jpg";
 
 const PORTFOLIO_ITEMS = [
-  { title: "Монтаж металлочерепицы", desc: "Частный дом, 180 м²", color: "#1e2a3a" },
-  { title: "Ремонт мягкой кровли", desc: "Дача, 90 м²", color: "#2a1e0a" },
-  { title: "Реставрация старого дома", desc: "Коттедж 1960-х годов", color: "#1a2a1a" },
-  { title: "Внутренняя отделка", desc: "Жилой дом, 3 комнаты", color: "#1e1e2a" },
-  { title: "Бетонная площадка", desc: "Заезд + парковка 60 м²", color: "#2a2a1e" },
-  { title: "Фасадные работы", desc: "Утепление и штукатурка", color: "#2a1a1a" },
+  { title: "Монтаж металлочерепицы", desc: "Частный дом, 180 м²", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/e6e6ebe2-c784-4121-a841-df037522bb50.jpg" },
+  { title: "Фасадные работы", desc: "Утепление и штукатурка", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/b5f422b0-98b0-4d2a-b2e9-9d44340dd756.jpg" },
+  { title: "Реставрация старого дома", desc: "Коттедж 1960-х годов", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/6f50f967-30b2-4b88-ab11-3842483b4964.jpg" },
+  { title: "Внутренняя отделка", desc: "Жилой дом, 3 комнаты", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/51163e08-e029-4229-8f1c-8d982b03b488.jpg" },
+  { title: "Бетонные работы", desc: "Фундамент и конструкции", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/ce07ee96-0034-46e7-ad27-64bbf2887f0a.jpg" },
+  { title: "Ремонт кровли под ключ", desc: "До и после — полная реконструкция", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/e6e6ebe2-c784-4121-a841-df037522bb50.jpg" },
 ];
 
 const SERVICES = [
-  { icon: "Home", title: "Кровельные работы", desc: "Монтаж, ремонт, замена кровли любой сложности" },
-  { icon: "Building2", title: "Фасадные работы", desc: "Отделка фасадов, утепление, декоративная отделка" },
-  { icon: "Layers", title: "Бетонные работы", desc: "Заливка фундаментных и бетонных конструкций" },
-  { icon: "Hammer", title: "Реставрация домов", desc: "Восстановление и укрепление старых конструкций" },
-  { icon: "PaintBucket", title: "Внутренняя отделка", desc: "Ремонт помещений, покраска, плитка" },
-  { icon: "Car", title: "Площадки и заезды", desc: "Строительство бетонных и асфальтированных площадок" },
+  { icon: "Home", title: "Кровельные работы", desc: "Монтаж, ремонт, замена кровли любой сложности", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/e6e6ebe2-c784-4121-a841-df037522bb50.jpg" },
+  { icon: "Building2", title: "Фасадные работы", desc: "Отделка фасадов, утепление, декоративная отделка", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/b5f422b0-98b0-4d2a-b2e9-9d44340dd756.jpg" },
+  { icon: "Layers", title: "Бетонные работы", desc: "Заливка фундаментных и бетонных конструкций", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/ce07ee96-0034-46e7-ad27-64bbf2887f0a.jpg" },
+  { icon: "Hammer", title: "Реставрация домов", desc: "Восстановление и укрепление старых конструкций", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/6f50f967-30b2-4b88-ab11-3842483b4964.jpg" },
+  { icon: "PaintBucket", title: "Внутренняя отделка", desc: "Ремонт помещений, покраска, плитка", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/51163e08-e029-4229-8f1c-8d982b03b488.jpg" },
+  { icon: "Car", title: "Площадки и заезды", desc: "Строительство бетонных и асфальтированных площадок", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/ce07ee96-0034-46e7-ad27-64bbf2887f0a.jpg" },
 ];
 
 const ADVANTAGES = [
@@ -277,14 +277,11 @@ function Portfolio() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PORTFOLIO_ITEMS.map((item, i) => (
             <div key={i} className="portfolio-img rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow">
-              <div className="h-52 flex items-end p-5 relative" style={{ background: `linear-gradient(135deg, ${item.color} 0%, #2a3040 100%)` }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 10px)" }} />
+              <div className="h-64 flex items-end p-5 relative" style={{ backgroundImage: `url(${item.img})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent group-hover:from-black/85 transition-all" />
                 <div className="relative z-10">
-                  <div className="w-10 h-10 bg-orange/90 rounded-lg flex items-center justify-center mb-3">
-                    <Icon name="Home" size={20} className="text-white" />
-                  </div>
                   <h3 className="font-montserrat font-bold text-white text-base">{item.title}</h3>
-                  <p className="text-white/60 text-sm">{item.desc}</p>
+                  <p className="text-white/70 text-sm">{item.desc}</p>
                 </div>
               </div>
             </div>
@@ -305,12 +302,19 @@ function Services() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((s, i) => (
-            <div key={i} className="card-hover bg-dark-secondary border border-white/8 rounded-2xl p-6">
-              <div className="w-12 h-12 bg-orange/15 rounded-xl flex items-center justify-center mb-4">
-                <Icon name={s.icon as string} size={24} className="text-orange" fallback="Home" />
+            <div key={i} className="card-hover bg-dark-secondary border border-white/8 rounded-2xl overflow-hidden">
+              <div className="h-44 relative" style={{ backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-secondary/90 via-black/30 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <div className="w-10 h-10 bg-orange rounded-xl flex items-center justify-center">
+                    <Icon name={s.icon as string} size={20} className="text-white" fallback="Home" />
+                  </div>
+                </div>
               </div>
-              <h3 className="font-montserrat font-bold text-white text-lg mb-2">{s.title}</h3>
-              <p className="text-white/55 text-sm leading-relaxed">{s.desc}</p>
+              <div className="p-5">
+                <h3 className="font-montserrat font-bold text-white text-lg mb-2">{s.title}</h3>
+                <p className="text-white/55 text-sm leading-relaxed">{s.desc}</p>
+              </div>
             </div>
           ))}
         </div>
