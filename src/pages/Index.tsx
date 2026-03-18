@@ -6,13 +6,23 @@ const PHONE_HREF = "tel:+79100821217";
 const EMAIL = "info@stroy-brigada.ru";
 const HERO_IMG = "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/files/a37be59d-cb5f-44d5-8d36-96ea54a88f87.jpg";
 
+const SEND_LEAD_URL = "https://functions.poehali.dev/074cd766-a9fe-4fa1-b0c0-081138b917c4";
+
+async function sendLead(name: string, phone: string) {
+  await fetch(SEND_LEAD_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, phone }),
+  });
+}
+
 const PORTFOLIO_ITEMS = [
+  { title: "Монтаж фасадных панелей", desc: "Утепление и облицовка", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/a42da067-0499-47e0-8257-6f5d9ebee35c.jpg" },
+  { title: "Реставрация старого дома", desc: "До и после — полная реконструкция", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/3c405835-5de1-472e-aa9e-ec6c07aab3b6.jpg" },
+  { title: "Внутренняя отделка", desc: "Ванная комната под ключ", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/0cb29598-28a5-4265-a8bf-0751a5fdbf0c.jpg" },
+  { title: "Строительство гаража", desc: "Гараж с заездной площадкой", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/71ce6131-abdd-420e-b905-8fd1952a5a64.jpg" },
+  { title: "Деревянный дом под ключ", desc: "Двухэтажный дом с верандой", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/4ab52269-5ae1-4d13-addc-7b91393b7d68.jpg" },
   { title: "Монтаж металлочерепицы", desc: "Частный дом, 180 м²", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/e6e6ebe2-c784-4121-a841-df037522bb50.jpg" },
-  { title: "Фасадные работы", desc: "Утепление и штукатурка", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/b5f422b0-98b0-4d2a-b2e9-9d44340dd756.jpg" },
-  { title: "Реставрация старого дома", desc: "Коттедж 1960-х годов", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/6f50f967-30b2-4b88-ab11-3842483b4964.jpg" },
-  { title: "Внутренняя отделка", desc: "Жилой дом, 3 комнаты", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/51163e08-e029-4229-8f1c-8d982b03b488.jpg" },
-  { title: "Бетонные работы", desc: "Фундамент и конструкции", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/ce07ee96-0034-46e7-ad27-64bbf2887f0a.jpg" },
-  { title: "Ремонт кровли под ключ", desc: "До и после — полная реконструкция", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/e6e6ebe2-c784-4121-a841-df037522bb50.jpg" },
 ];
 
 const SERVICES = [
@@ -170,11 +180,11 @@ function Hero({ onCallClick }: { onCallClick: () => void }) {
             {sent ? (
               <div className="text-center py-8">
                 <Icon name="CheckCircle2" size={48} className="text-orange mx-auto mb-3" />
-                <p className="text-white font-montserrat font-semibold text-lg">Заявка отправлена!</p>
-                <p className="text-white/60 text-sm mt-2">Свяжемся с вами в ближайшее время</p>
+                <p className="text-white font-montserrat font-semibold text-lg">Спасибо! Заявка принята.</p>
+                <p className="text-white/60 text-sm mt-2">Мы свяжемся с вами в ближайшее время</p>
               </div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="flex flex-col gap-3">
+              <form onSubmit={async (e) => { e.preventDefault(); await sendLead(name, phone); setSent(true); }} className="flex flex-col gap-3">
                 <input type="text" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)}
                   className="bg-white/10 border border-white/30 text-white placeholder-white/40 rounded-lg px-4 py-3 outline-none focus:border-orange transition-colors" required />
                 <input type="tel" placeholder="Номер телефона" value={phone} onChange={(e) => setPhone(e.target.value)}
@@ -239,7 +249,7 @@ function Quiz() {
                 <>
                   <h3 className="font-montserrat font-bold text-dark text-xl md:text-2xl mb-2">Контактные данные</h3>
                   <p className="text-gray-mid text-sm mb-6">Укажите данные для получения расчёта</p>
-                  <form onSubmit={(e) => { e.preventDefault(); setDone(true); }} className="flex flex-col gap-4">
+                  <form onSubmit={async (e) => { e.preventDefault(); await sendLead(name, phone); setDone(true); }} className="flex flex-col gap-4">
                     <input type="text" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)}
                       className="border-2 border-gray-200 focus:border-orange rounded-xl px-5 py-3 outline-none text-dark transition-colors" required />
                     <input type="tel" placeholder="Номер телефона" value={phone} onChange={(e) => setPhone(e.target.value)}
@@ -255,8 +265,8 @@ function Quiz() {
               <div className="w-20 h-20 bg-orange/10 rounded-full flex items-center justify-center mx-auto mb-5">
                 <Icon name="CheckCircle2" size={40} className="text-orange" />
               </div>
-              <h3 className="font-montserrat font-extrabold text-dark text-2xl mb-3">Заявка принята!</h3>
-              <p className="text-gray-mid mb-6">Наш специалист свяжется с вами в течение 15 минут и рассчитает стоимость работ</p>
+              <h3 className="font-montserrat font-extrabold text-dark text-2xl mb-3">Спасибо! Заявка принята.</h3>
+              <p className="text-gray-mid mb-6">Мы свяжемся с вами в ближайшее время</p>
               <a href={PHONE_HREF} className="orange-btn inline-block px-8 py-3">Позвонить сейчас</a>
             </div>
           )}
@@ -453,11 +463,11 @@ function CTA({ onCallClick }: { onCallClick: () => void }) {
         {sent ? (
           <div className="bg-dark-secondary rounded-2xl p-10 text-center">
             <Icon name="CheckCircle2" size={48} className="text-orange mx-auto mb-3" />
-            <p className="text-white font-montserrat font-bold text-xl">Заявка принята!</p>
-            <p className="text-white/50 mt-2">Перезвоним в течение 1 минуты</p>
+            <p className="text-white font-montserrat font-bold text-xl">Спасибо! Заявка принята.</p>
+            <p className="text-white/50 mt-2">Мы свяжемся с вами в ближайшее время</p>
           </div>
         ) : (
-          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="bg-dark-secondary rounded-2xl p-6 md:p-8 flex flex-col gap-4">
+          <form onSubmit={async (e) => { e.preventDefault(); await sendLead(name, phone); setSent(true); }} className="bg-dark-secondary rounded-2xl p-6 md:p-8 flex flex-col gap-4">
             <input type="text" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)}
               className="bg-white/8 border border-white/20 text-white placeholder-white/35 rounded-xl px-5 py-3 outline-none focus:border-orange transition-colors" required />
             <input type="tel" placeholder="Номер телефона" value={phone} onChange={(e) => setPhone(e.target.value)}
@@ -575,11 +585,11 @@ function CallModal({ open, onClose }: { open: boolean; onClose: () => void }) {
         {sent ? (
           <div className="text-center py-6">
             <Icon name="CheckCircle2" size={44} className="text-orange mx-auto mb-3" />
-            <p className="font-montserrat font-bold text-dark text-lg">Заявка принята!</p>
-            <p className="text-gray-mid text-sm mt-1">Скоро перезвоним</p>
+            <p className="font-montserrat font-bold text-dark text-lg">Спасибо! Заявка принята.</p>
+            <p className="text-gray-mid text-sm mt-1">Мы свяжемся с вами в ближайшее время</p>
           </div>
         ) : (
-          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="flex flex-col gap-3">
+          <form onSubmit={async (e) => { e.preventDefault(); await sendLead(name, phone); setSent(true); }} className="flex flex-col gap-3">
             <input type="text" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)}
               className="border-2 border-gray-200 focus:border-orange rounded-xl px-4 py-3 outline-none text-dark transition-colors" required />
             <input type="tel" placeholder="Номер телефона" value={phone} onChange={(e) => setPhone(e.target.value)}
