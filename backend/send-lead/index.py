@@ -21,8 +21,19 @@ def handler(event: dict, context) -> dict:
     body = json.loads(event.get("body") or "{}")
     name = body.get("name", "").strip()
     phone = body.get("phone", "").strip()
+    service = body.get("service", "").strip()
+    area = body.get("area", "").strip()
+    comment = body.get("comment", "").strip()
 
-    text = f"Новая заявка с сайта:\nИмя: {name}\nТелефон: {phone}"
+    lines = ["🏠 Новая заявка с сайта:", f"👤 Имя: {name}", f"📞 Телефон: {phone}"]
+    if service:
+        lines.append(f"🔧 Услуга: {service}")
+    if area:
+        lines.append(f"📐 Площадь: {area} м²")
+    if comment:
+        lines.append(f"💬 Комментарий: {comment}")
+
+    text = "\n".join(lines)
 
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
     data = urllib.parse.urlencode({"chat_id": CHAT_ID, "text": text}).encode()

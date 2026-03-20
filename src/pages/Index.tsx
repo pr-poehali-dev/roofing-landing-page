@@ -41,7 +41,7 @@ const SERVICES = [
   { icon: "Layers", title: "Бетонные работы", desc: "Заливка фундаментных и бетонных конструкций", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/ce07ee96-0034-46e7-ad27-64bbf2887f0a.jpg" },
   { icon: "Hammer", title: "Реставрация домов", desc: "Восстановление и укрепление старых конструкций", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/6f50f967-30b2-4b88-ab11-3842483b4964.jpg" },
   { icon: "PaintBucket", title: "Внутренняя отделка", desc: "Ремонт помещений, покраска, плитка", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/51163e08-e029-4229-8f1c-8d982b03b488.jpg" },
-  { icon: "Car", title: "Площадки и заезды", desc: "Строительство бетонных и асфальтированных площадок", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/ce07ee96-0034-46e7-ad27-64bbf2887f0a.jpg" },
+  { icon: "Car", title: "Площадки и заезды", desc: "Строительство бетонных и асфальтированных площадок", img: "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/bucket/cf13e430-c173-40a5-9fcf-bcc9e1cb3377.jpg" },
 ];
 
 const ADVANTAGES = [

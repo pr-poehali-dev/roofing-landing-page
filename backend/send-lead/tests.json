@@ -10,7 +10,7 @@
       "name": "Send lead to Telegram",
       "method": "POST",
       "path": "/",
-      "body": {"name": "Тест", "phone": "+79001234567"},
+      "body": {"name": "Тест", "phone": "+79001234567", "service": "Кровельные работы", "area": "100", "comment": "Тестовый комментарий"},
       "expectedStatus": 200,
       "expectedBody": {"ok": true},
       "bodyMatcher": "partial"
