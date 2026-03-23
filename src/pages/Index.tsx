@@ -3,6 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const PHONE = "+79100821217";
 const PHONE_HREF = "tel:+79100821217";
+const TELEGRAM_HREF = "https://t.me/+79100821217";
 const EMAIL = "info@stroy-brigada.ru";
 const HERO_IMG = "https://cdn.poehali.dev/projects/a04ac7a3-1ae6-430f-ae81-a481b6930e5a/files/a37be59d-cb5f-44d5-8d36-96ea54a88f87.jpg";
 
@@ -169,6 +170,10 @@ function Header({ onCallClick }: { onCallClick: () => void }) {
             <a href={PHONE_HREF} className="block text-white font-montserrat font-bold text-base hover:text-orange transition-colors">{PHONE}</a>
             <span className="text-white/50 text-xs">Круглосуточно</span>
           </div>
+          <a href={TELEGRAM_HREF} target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center gap-1.5 bg-[#229ED9] hover:bg-[#1a8cc4] text-white rounded-xl px-3 py-2 text-sm font-montserrat font-semibold transition-colors">
+            <Icon name="Send" size={15} className="text-white" />
+            Telegram
+          </a>
           <button onClick={onCallClick} className="orange-btn px-4 py-2 text-sm hidden sm:block">Заказать звонок</button>
           <button className="lg:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={24} />
@@ -184,6 +189,10 @@ function Header({ onCallClick }: { onCallClick: () => void }) {
             </a>
           ))}
           <a href={PHONE_HREF} className="block mt-3 text-orange font-montserrat font-bold">{PHONE}</a>
+          <a href={TELEGRAM_HREF} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-[#229ED9] hover:bg-[#1a8cc4] text-white rounded-xl w-full mt-3 py-2 text-sm font-montserrat font-semibold transition-colors">
+            <Icon name="Send" size={15} className="text-white" />
+            Написать в Telegram
+          </a>
           <button onClick={onCallClick} className="orange-btn w-full mt-3 py-2 text-sm">Заказать звонок</button>
         </div>
       )}
@@ -216,9 +225,15 @@ function Hero({ onOrderClick }: { onOrderClick: () => void }) {
                 </div>
               ))}
             </div>
-            <button onClick={onOrderClick} className="orange-btn pulse-ring px-8 py-4 text-lg">
-              Получить расчёт стоимости
-            </button>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={onOrderClick} className="orange-btn pulse-ring px-8 py-4 text-lg">
+                Получить расчёт стоимости
+              </button>
+              <a href={TELEGRAM_HREF} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[#229ED9] hover:bg-[#1a8cc4] text-white rounded-xl px-7 py-4 text-base font-montserrat font-semibold transition-colors">
+                <Icon name="Send" size={18} className="text-white" />
+                Написать в Telegram
+              </a>
+            </div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 lg:p-8 flex flex-col gap-4">
@@ -554,7 +569,10 @@ function CTA({ onOrderClick }: { onOrderClick: () => void }) {
         <p className="text-white/60 mb-8">Оставьте заявку, и наш специалист свяжется с вами через 1 минуту</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button onClick={onOrderClick} className="orange-btn px-10 py-4 text-base">Получить расчёт стоимости</button>
-          <button onClick={onOrderClick} className="border-2 border-white/30 text-white hover:border-orange hover:text-orange transition-colors rounded-xl px-10 py-4 text-base font-montserrat font-semibold">Получить консультацию</button>
+          <a href={TELEGRAM_HREF} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-[#229ED9] hover:bg-[#1a8cc4] text-white rounded-xl px-10 py-4 text-base font-montserrat font-semibold transition-colors">
+            <Icon name="Send" size={18} className="text-white" />
+            Написать в Telegram
+          </a>
         </div>
       </div>
     </section>
@@ -578,6 +596,15 @@ function Contacts() {
               <div>
                 <div className="text-gray-mid text-xs mb-1">Телефон</div>
                 <div className="font-montserrat font-bold text-dark text-xl group-hover:text-orange transition-colors">{PHONE}</div>
+              </div>
+            </a>
+            <a href={TELEGRAM_HREF} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:border-[#229ED9]/30 transition-colors group">
+              <div className="w-12 h-12 bg-[#229ED9] rounded-xl flex items-center justify-center">
+                <Icon name="Send" size={22} className="text-white" />
+              </div>
+              <div>
+                <div className="text-gray-mid text-xs mb-1">Telegram</div>
+                <div className="font-montserrat font-bold text-dark text-xl group-hover:text-[#229ED9] transition-colors">Написать сообщение</div>
               </div>
             </a>
             <div className="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
@@ -632,8 +659,12 @@ function Footer() {
             <a href="#" className="hover:text-orange transition-colors">Согласие на обработку данных</a>
             <a href="#" className="hover:text-orange transition-colors">Cookie Policy</a>
           </div>
-          <div className="text-right">
+          <div className="flex flex-col items-end gap-2">
             <a href={PHONE_HREF} className="block text-white font-montserrat font-bold hover:text-orange transition-colors">{PHONE}</a>
+            <a href={TELEGRAM_HREF} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#229ED9] hover:text-[#1a8cc4] font-montserrat font-semibold text-sm transition-colors">
+              <Icon name="Send" size={14} className="text-[#229ED9]" />
+              Написать в Telegram
+            </a>
             <span className="text-white/40 text-xs">Круглосуточно</span>
           </div>
         </div>
