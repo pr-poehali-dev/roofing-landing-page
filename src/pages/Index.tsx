@@ -616,15 +616,7 @@ function Contacts() {
                 <div className="font-montserrat font-bold text-dark">Пн–Вс: круглосуточно</div>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-              <div className="w-12 h-12 bg-orange/10 rounded-xl flex items-center justify-center">
-                <Icon name="Mail" size={22} className="text-orange" />
-              </div>
-              <div>
-                <div className="text-gray-mid text-xs mb-1">Email</div>
-                <div className="font-montserrat font-bold text-dark">{EMAIL}</div>
-              </div>
-            </div>
+
           </div>
           <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 min-h-64">
             <iframe
